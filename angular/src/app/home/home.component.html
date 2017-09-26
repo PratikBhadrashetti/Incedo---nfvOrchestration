@@ -1,0 +1,211 @@
+<div class="loading" *ngIf="loadingImg"> <div class="center"><img src="assets/images/loading.gif"/></div></div>
+<nav class="navbar navbar-default" >
+  <div class="container">
+    <div class="navbar-header"></div>
+    <ul class="nav navbar-nav">
+    <!-- <li><a [routerLink]="['dashboard']" *ngIf="currentUserRole=='Super Security Admin'">HOME</a></li> -->
+    <li *ngIf="currentUserRole=='Super Security Admin'"><a [routerLink]="['dashboard']" >DASHBOARD </a></li>
+      <li class="dropdown" *ngIf="currentUserRole!=='End User'">
+        <a class="dropdown-toggle" data-toggle="dropdown" id="catalog">
+        CATALOG <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a [routerLink]="['catalogue']" id="cataloglist">LIST</a></li>
+          <li><a [routerLink]="['addcatalogue']" id="catalogadd" *ngIf="currentUserRole=='Super Security Admin' || currentUserRole=='Tenant Admin'">ADD</a></li>
+          <li> <a (click)='setmodifycatalog()' id="catalogmodify" [routerLink]="['modifycatalogue']"  *ngIf="currentUserRole=='Super Security Admin' || currentUserRole=='Tenant Admin'"> MODIFY </a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" id="vnf" data-toggle="dropdown">
+        VNF <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a [routerLink]="['imageUpload']" 
+                *ngIf="currentUserRole=='Super Security Admin' || currentUserRole=='Tenant Admin'" >
+              UPLOAD VNF IMAGE</a>
+          </li>
+          <li><a [routerLink]="['registerVnf']" 
+                *ngIf="currentUserRole=='Super Security Admin' || currentUserRole=='Tenant Admin' && currentStack=='tacker'" >
+              REGISTER VNF</a>
+          </li>
+          <li><a (click)='setvnflist()' id="listvnf"
+                  [routerLink]="['vnflist']" 
+                  *ngIf="currentUserRole=='Super Security Admin' || currentUserRole=='Tenant Admin'">LIST VNF</a>
+          </li>
+          <li><a [routerLink]="['vnf']" id="instances">INSTANCES</a></li>
+        </ul>
+      </li>
+       <li *ngIf="currentUserRole=='Tenant Admin'"><a [routerLink]="['dashboard']" >DASHBOARD</a></li>
+      <li *ngIf="currentUserRole!=='End User'">
+        <a class='dropdown-toggle' [routerLink]="['status']">ANALYTICS</a>
+      </li>
+       <!--<li *ngIf="currentUserRole==='Super Security Admin'">
+        <a class='dropdown-toggle' [routerLink]="['network']">NETWORK</a>
+      </li>-->
+        <li class="dropdown" *ngIf="currentUserRole!=='End User'">
+        <a class="dropdown-toggle" data-toggle="dropdown">
+       LAB RESOURCES <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+         <li><a [routerLink]="['network']" *ngIf="currentUserRole==='Super Security Admin'">TENANT NETWORK RESOURCES</a></li>
+          <li><a [routerLink]="['tenantnetwork']"  *ngIf="currentUserRole=='Tenant Admin' || currentUserRole=='Super Security Admin'">TENANT NETWORK</a></li>
+         <!--<li><a [routerLink]="['projectinfo']" 
+           *ngIf="currentUserRole=='Tenant Admin'">PROJECT INFO</a></li>-->
+          </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown">
+        HELP CENTER <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+         <li><a [routerLink]="['onlineSupport']">ONLINE SUPPORT</a></li>
+          <li><a [routerLink]="['troubleShooting']">TROUBLESHOOTING</a></li>
+          <li><a [routerLink]="['faq']">FAQ</a></li>
+          <li><a [routerLink]="['contactus']">CONTACT US</a></li>
+          </ul>
+      </li>
+      
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a  class="dropdown-toggle">{{currentUserRole}}</a></li>
+      <li class='dropdown'><a  id="loggedinuser" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> {{currentUserName}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <li><a [routerLink]="['changepassword']">CHANGE PASSWORD</a></li>
+           <li><a [routerLink]="['resetuser']" 
+           *ngIf="currentUserRole=='Super Security Admin'||currentUserRole=='Tenant Admin'">RESET USER</a></li>
+            <li><a [routerLink]="['tenantmanagement']" 
+           *ngIf="currentUserRole=='Super Security Admin'">TENANT MANAGEMENT</a></li>
+            <li><a [routerLink]="['usermanagement']" 
+           *ngIf="currentUserRole=='Tenant Admin'">USER MANAGEMENT</a></li>
+            <li><a [routerLink]="['managevims']" 
+           *ngIf="currentUserRole=='Super Security Admin'">MANAGE VIM</a></li>
+             <!--<li><a [routerLink]="['projectinfo']" 
+           *ngIf="currentUserRole=='Tenant Admin'">PROJECT INFO</a></li>-->
+             <!--<li><a [routerLink]="['tenantnetwork']" 
+           *ngIf="currentUserRole=='Tenant Admin' || currentUserRole=='Super Security Admin'">TENANT NETWORK</a></li>-->
+            <li><a  href (click)="logout()" id="logout">LOGOUT</a></li>
+           </ul>          
+      </li>
+     <li> <li class="dropdown">
+          <a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span></a>
+          <ul class="dropdown-menu dropdown-menu-cust">
+            <li>
+               <form class="navbar-form navbar-left">
+              <div class="form-group">
+                 <label for="setvim">Please select VIM</label>
+                <select  class="form-control" name="vim" [(ngModel)]="model.vim" #vim="ngModel" (ngModelChange)="setVimObject($event)">
+                          <option *ngFor="let vim of osOptions"  [ngValue]= "vim">
+                              {{vim.name+'-'+vim.ipaddress}}
+                          </option>
+                </select>
+              </div>
+            
+            </form>
+            </li>
+           
+          </ul>
+        </li>
+    </ul>
+      
+  </div>
+</nav>
+ <section class="pull-right" id = "header1"  >
+  <li class="dropdown " style="margin-right: 90px;">
+  Version : {{version}}
+  </li>
+  </section>
+<div class="brdcmbCls"> 
+  <b>{{breadcrumb}}</b>
+</div>
+
+<!--initial network settings-->
+<modal #openNetworksettings [backdrop]="'static'">
+    <form #modalForm="ngForm" class="form-horizontal">
+        <!--<modal-header [show-close]="false">
+            <h4 class="modal-title">I'm a modal!</h4>
+        </modal-header>-->
+        <modal-body>
+           
+           <ul class="nav nav-tabs" role="tablist">
+               <li role="presentation" class="{{onactive ? 'active': 'not-active'}}" ><a href="#projectdetails" aria-controls="projectdetails" role="tab" data-toggle="tab">Project</a></li>
+               <li role="presentation"  class="{{settingonactive ? 'active': 'not-active'}}"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Network</a></li>
+           </ul>
+
+             <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane {{onactive ? 'active': 'not-active'}}" id="projectdetails">
+                  <form #projectForm="ngForm">
+                     <div class="form-group">
+                              <label for="projectName" class="col-sm-3 control-label">Project name</label>
+                              <div class="col-sm-9">
+                              <input type="text" class="form-control" required [(ngModel)]="projectName" name="projectName" id="projectName" placeholder="Project name">
+                              </div>
+                          </div>
+                          <div class="form-group" >
+                              <label for="userName" class="col-sm-3 control-label">User name</label>
+                               <div class="col-sm-9">
+                              <input type="text" class="form-control" required [(ngModel)]="userName" name="userName" id="userName" placeholder="User name">
+                               </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="password" class="col-sm-3 control-label">Password</label>
+                            <div class="col-sm-9">
+                              <input type="password" class="form-control" required [(ngModel)]="password" name="password" id="password" placeholder="Password">
+                            </div>
+                          </div>
+                             <!--<button type="button" class="btn btn-default" data-dismiss="modal" (click)="validationModal.dismiss()">Cancel</button>-->
+                              <button type="button" class="btn btn-primary pull-right" [disabled]="!projectForm.valid" (click)="clickOnNext()">Save</button>
+                  </form>
+                </div>
+                <div role="tabpanel" class="tab-pane {{settingonactive ? 'active': 'not-active'}}" id="settings">
+                   <form #settingForm="ngForm">
+                   <!--<div class="form-group">
+                              <label for="networkName" class="col-sm-3 control-label">Network name</label>
+                              <div class="col-sm-9">
+                              <input type="text" class="form-control" required [(ngModel)]="networkName" name="networkName" id="networkName" placeholder="Network name">
+                              </div>
+                          </div>
+                          <div class="form-group" >
+                              <label for="subnetName" class="col-sm-3 control-label">Subnet name</label>
+                               <div class="col-sm-9">
+                              <input type="text" class="form-control" required [(ngModel)]="subnetName" name="subnetName" id="subnetName" placeholder="Subnet name">
+                               </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="password" class="col-sm-3 control-label">Private network</label>
+                            <div class="col-sm-9">
+                               <br-select  [multiple]="true" required  [(ngModel)]="privateNetwork" name="select" placeholder="Select private network" style="width: 100%;">
+                                <br-select-option [value]="network.id" [text]="network.id" *ngFor="let network of getallprivateNetwork" >{{network.start}}-{{network.end}}</br-select-option>
+                              </br-select>
+                            </div>
+                          </div>-->
+                  
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Start</th>
+                          <th>End</th>
+                          <th>Network name</th>
+                          <th>Subnet name</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let network of getallprivateNetwork;let i=index;trackBy:trackByIndex;">
+                          <td><input type="checkbox"  value="{{network.id}}"  (change)="onChecked(network.id,$event)"></td>
+                          <td>{{network.start}}</td>
+                          <td>{{network.end}}</td>
+                          <td><input type="text" class="form-control" required [(ngModel)]="networkName" name="networkName" id="networkName"  placeholder="Network name"></td>
+                          <td><input type="text" class="form-control" required [(ngModel)]="subnetName" name="subnetName" id="subnetName"  placeholder="Subnet name"></td>
+                        </tr>
+                       
+                      </tbody>
+                    </table>
+                        <!--<button type="button" class="btn btn-default" data-dismiss="modal" (click)="validationModal.dismiss()">Cancel</button>-->
+                         <button type="button" class="btn btn-primary pull-right" [disabled]="!settingForm.valid" data-dismiss="modal" (click)="savePrivateNetwork()">Save</button>
+                    </form>
+                </div>
+            </div>
+
+        </modal-body>
+       
+        </form>
+</modal>
+<router-outlet></router-outlet>

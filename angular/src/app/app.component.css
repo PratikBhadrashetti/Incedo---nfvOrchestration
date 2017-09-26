@@ -1,0 +1,32 @@
+/*@font-face {
+    font-family: blackJack;
+    src: url(assets/fonts/blackjack.woff/blackjack.woff);
+}
+
+@font-face {
+    font-family: ostrich;
+    src: url(assets/fonts/ostrich/OstrichSans-Heavy.otf);
+}*/
+/*
+header span{padding-left: 75px;font-size: 22px;text-shadow: 0 0 3px #FF0000,
+ 0 0 5px #d8d3d3;}*/
+/*
+
+body {
+    background: #f1f1f1 !important;
+}*/
+.brand-logo-size{
+   width: 120px;
+   margin-top: -9px;
+}
+.navbar-customize{
+    margin-bottom: 0px !important;
+    background-color: #fff;
+    border-radius: 0px !important;
+}
+.navbar-brand-customize{
+    color:#bb0000;
+    font-weight: 600;
+    font-size: 16px;
+    padding-top:16px;
+}

@@ -1,0 +1,70 @@
+ <button class="btn" style="margin-left:40px;" (click)='newUserTable()'>NEW USERS</button> &nbsp;&nbsp;&nbsp;
+ <button class="btn" (click)='allUserTable()'>PROVISIONED USERS</button> 
+ <div class="container" [hidden]='table1'>
+
+ <div id="table1">
+ <h4 style="color:#E22835;margin-top: 70px;margin-left: 20px;"> NEW USERS</h4>
+ <hr >
+<table id="viewUserTable">
+	<tr>
+		<th>
+			ID
+		</th>
+		<th>
+			NAME
+		</th>
+		<th>
+			CATALOG
+		</th>
+	</tr>
+	<tr *ngFor="let user of users">
+		<td>
+			{{user.id}}
+		</td>
+		<td>
+			{{user.name}}
+		</td>
+		<td>
+		</td>
+		<td>
+			<button class="btn" >ACTIVATE</button> &nbsp;&nbsp;&nbsp;
+		</td>		
+	</tr>
+</table>
+</div>
+</div>
+
+<div class="container" [hidden]='table2'>
+<div id="table2">
+<h4 style="color:#E22835;margin-top: 70px;margin-left: 20px;"> PROVISIONED USERS</h4>
+<hr>
+<table id="viewUserTable">
+	<tr>
+		<th>
+			ID
+		</th>
+		<th>
+			NAME
+		</th>
+		<th>
+			CATALOG
+		</th>
+	</tr>
+	<tr *ngFor="let user of users">
+		<td>
+			{{user.id}}
+		</td>
+		<td>
+			{{user.name}}
+		</td>
+		<td>
+			{{user.catalog}}
+		</td>
+		<td>
+			<!-- <button class="btn" >ACTIVATE</button> &nbsp;&nbsp;&nbsp; --> <button class="btn">DE-ACTIVATE</button>
+		</td>
+		
+	</tr>
+</table>
+</div>
+</div>

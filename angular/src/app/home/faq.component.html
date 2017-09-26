@@ -1,0 +1,128 @@
+<div class="container">
+    <div class="panel-group" id="accordion">
+        <div class="faqHeader">General questions</div>
+        <div class="panel panel-default">
+        <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">How to list all catalogs?</a>
+                </h4>
+         </div>
+         <div id="collapseOne" class="panel-collapse collapse in" >
+             <div class="panel-body">
+                <b> <i>Click</i> </b>on <strong>CATALOG</strong> option in the Navigation menu,
+                 select <strong>List</strong> and view all catalogs
+             </div>
+         </div>
+         <div class="panel-heading" *ngIf="currentUserRole!=='End User'">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse2">How to add a catalog?</a>
+                </h4>
+         </div>
+         <div id="collapse2" class="panel-collapse collapse" *ngIf="currentUserRole!=='End User'">
+             <div class="panel-body">
+                <b> <i>Click</i> </b>on <strong>CATALOG</strong> option in the Navigation menu,
+                 select <strong>Add</strong> and fill all the fields then click <strong>Save</strong>
+             </div>
+         </div>
+          <div class="panel-heading" *ngIf="currentUserRole!=='End User'">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse3">How to modify a catalog?</a>
+                </h4>
+         </div>
+         <div id="collapse3" class="panel-collapse collapse" *ngIf="currentUserRole!=='End User'">
+             <div class="panel-body">
+                <b> <i>Click</i> </b>on <strong>CATALOG</strong> option in the Navigation menu,
+                 select <strong>Modify</strong> and click on icon, modify the fields required then click <strong>Save</strong>
+             </div>
+         </div>
+         <div class="panel-heading" *ngIf="currentUserRole!=='End User'">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse4">How to associate a VNF to catalog?</a>
+                </h4>
+         </div>
+         <div id="collapse4" class="panel-collapse collapse" *ngIf="currentUserRole!=='End User'">
+             <div class="panel-body">
+                <b> <i>Click</i> </b>on <strong>CATALOG</strong> option in the Navigation menu,
+                 select <strong>List</strong> and click on icon, then click <strong>Associate</strong>. select VNF's and <strong>Save</strong>
+             </div>
+         </div>
+         <div class="panel-heading" *ngIf="currentUserRole!=='End User'">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse5">How to dissociate a VNF from catalog?</a>
+                </h4>
+         </div>
+         <div id="collapse5" class="panel-collapse collapse" *ngIf="currentUserRole!=='End User'">
+             <div class="panel-body">
+                <b> <i>Click</i> </b>on <strong>CATALOG</strong> option in the Navigation menu,
+                 select <strong>List</strong> and click on icon, select VNF's and click <strong>dissociate</strong>
+             </div>
+         </div>
+         <div class="panel-heading" *ngIf="currentUserRole!=='End User'">
+             <h4 class="panel-title">
+                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse6">How to launch a VNF?</a>
+             </h4>
+         </div>
+         <div id="collapse6" class="panel-collapse collapse" *ngIf="currentUserRole!=='End User'">
+             <div class="panel-body">
+                <b> <i>Click</i> </b>on <strong>VNF</strong> option in the Navigation menu,
+                 select <strong>List</strong> and click <strong>Launch</strong>
+             </div>
+         </div>
+         <div class="panel-heading" *ngIf="currentUserRole=='End User'">
+             <h4 class="panel-title">
+                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse7">How to view a launched VNF?</a>
+             </h4>
+         </div>
+         <div id="collapse7" class="panel-collapse collapse" *ngIf="currentUserRole=='End User'">
+             <div class="panel-body">
+                <b> <i>Click</i> </b>on <strong>VNF</strong> option in the Navigation menu,
+                 select <strong>Instances</strong> and view all <strong>launched VNF</strong>
+             </div>
+         </div>
+          <div class="panel-heading" *ngIf="currentUserRole!=='End User'">
+             <h4 class="panel-title">
+                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse8">How to add users to launched VNF?</a>
+             </h4>
+         </div>
+         <div id="collapse8" class="panel-collapse collapse" *ngIf="currentUserRole!=='End User'">
+             <div class="panel-body">
+                <b> <i>Click</i> </b>on <strong>VNF</strong> option in the Navigation menu,
+                 select <strong>Instances</strong>, click  <strong>Manage</strong>, select users and <strong>Save</strong>
+             </div>
+         </div>
+          <div class="panel-heading" *ngIf="currentUserRole!=='End User'">
+             <h4 class="panel-title">
+                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse9">How to delete a launched VNF?</a>
+             </h4>
+         </div>
+         <div id="collapse9" class="panel-collapse collapse" *ngIf="currentUserRole!=='End User'">
+             <div class="panel-body">
+                <b> <i>Click</i> </b>on <strong>VNF</strong> option in the Navigation menu,
+                 select <strong>Instances</strong> and view all launched VNF . If status is 'ACTIVE' then user can click <strong>Delete</strong>
+             </div>
+         </div>
+          <div class="panel-heading" >
+             <h4 class="panel-title">
+                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse10">How to check the launched VNF status?</a>
+             </h4>
+         </div>
+         <div id="collapse10" class="panel-collapse collapse">
+             <div class="panel-body">
+                <b> <i>Click</i> </b>on <strong>STATUS</strong> option in the Navigation menu,
+                 and view all launched VNF status
+             </div>
+         </div>
+          <div class="panel-heading" *ngIf="currentUserRole!=='End User'">
+             <h4 class="panel-title">
+                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse11">How to launch ELK?</a>
+             </h4>
+         </div>
+         <div id="collapse11" class="panel-collapse collapse" *ngIf="currentUserRole!=='End User'">
+             <div class="panel-body">
+                <b> <i>Click</i> </b>on <strong>STATUS</strong> option in the Navigation menu,
+                 and view all launched VNF . If status is 'ACTIVE' then user can click <strong>Launch ELK</strong>
+             </div>
+         </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+
+
+<div class="container margin-60px-top" >
+	<div class="row">
+		  <div class="col-md-12">
+			  <div class="alert alert-danger errorDiv" role="alert" *ngIf="statusMsg">
+  <strong>{{statusMsg}}</strong><span class='pull-right' style="cursor:pointer;color:red;"(click)="hideStatusMsg()">X</span>  
+</div>
+<p class="pull-right">
+	 <button class="btn btn-primary btn-sm" (click)='refreshPage()'><span class="glyphicon glyphicon-refresh" ></span> Refresh</button>
+	<select class="" style="width:170px;padding:6px;border-radius:4px;cursor: pointer;" name="cat" placeholder="Select catalog" [(ngModel)]="model.items">
+                <option value='10' selected='true'>10 Items per page</option>
+                <option value='25'>25 Items per page</option>
+                <option value='50'>50 Items per page</option>
+  </select>
+	
+</p>
+	 <div [ngClass]="{'respErr': err}">
+            {{vnfInstMsg}}
+  	</div>
+	  <div class="col-md-12" style="padding-right: 0px;padding-left: 0px;">	
+	 <div class="panel panel-default">
+        <div class="panel-body">
+					
+	<table  class="table">
+		<thead> 
+		<tr>
+			<th>Instance Name</th>
+			<th>VNF Name</th>
+			<th>Catalog</th>
+			<th>Public IP</th>
+			<th>Private IP</th>
+			<th>Status</th>
+			<th>Created</th>
+			<th>Action</th>
+		</tr>
+		</thead> 
+		 <tbody> 
+		<tr *ngFor="let vnf of vnfInstList | paginate: { itemsPerPage: model.items, currentPage: p }"  title="{{vnf.description}}">
+			<td>{{vnf.name}}</td>
+			<td>{{vnf.vnf.name}}</td>
+			<td>{{vnf.catalog.name}}</td>
+			<td>{{vnf.publicip}}</td>
+			<td>{{vnf.privateip}}</td>
+			<td>{{vnf.status}}</td>
+			<td>{{vnf.created}}</td>
+			<td>
+				<!--<button type="button" class="btn btn-success btn-sm" [disabled]="vnf.servicestatus== true" (click)="assignExternalIp(vnf)"> Assign IP</button>-->
+				<a class="view" *ngIf="currentUserRole =='End User'" (click)="viewVnf(vnf)"> View</a>	
+				<!--<button type="button" class="btn btn-success btn-sm" (click)="action(vnf)" 
+				*ngIf="currentUserRole =='Super Security Admin'||currentUserRole =='Tenant Admin'" 
+				[disabled]="vnf.status!=='ACTIVE'" data-toggle="tooltip" data-placement="bottom" title="Only applicable for Cloud vUIC">Manage</button>-->
+				<button type="button" class="btn btn-success btn-sm"
+				*ngIf="currentUserRole =='Super Security Admin'||currentUserRole =='Tenant Admin'"
+				[disabled]="vnf.status!=='ACTIVE'" (click)="deleteConf(vnf.id)">Delete</button>
+			</td>
+		</tr>
+		</tbody> 
+	</table>
+
+	</div>
+</div>
+	<div style="padding:20px;width:100%;text-align: center;cursor:pointer;">
+   		<pagination-controls class="my-pagination" (pageChange)="p = $event" autoHide="true"></pagination-controls>
+   </div>
+</div>
+</div>
+</div>	
+<div id="myModal" class="vnfmodal" *ngIf='showModal' (click)="closeModal()">
+  <!-- Modal content -->
+    <div class="modalContent">
+      <span class="close" data-dismiss="modal">&times;</span>
+      <p>Are you sure you want to delete VNF instance?</p>
+      <div class="text-center">
+       	<button type="button" class="btn btn-success btn-sm" (click)="deleteVnfFn()">OK</button>
+        <button type="button" class="btn btn-success btn-sm" (click)="closeModal()">Cancel</button>
+       </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
+			

@@ -1,0 +1,41 @@
+/*a {
+    cursor: pointer;
+}
+.modal-backdrop {
+    top: 53px;
+    background: linear-gradient(#ccc,#337ab7);
+}
+.modal{
+	display: block;
+}
+#autoPopModal{
+	padding-top: 8%;
+}
+.modal-footer{
+	border:none;
+}
+.modal-header{
+	background-color: #425563;
+    text-align: center;
+    color: #fff;
+}
+.modal-content{
+	 border: 1px solid #425563
+	 }
+#loginFormId{
+	width: 50%;
+	margin-left: 25%;
+}
+#myModalLabel{
+	font-family: -webkit-pictograph;
+}
+#errorLog{    
+	padding: 4px;
+    margin-bottom: 10px;}
+button{
+	background:#A94442;padding:5px 10px;border:none;cursor:pointer;border-radius: 4px;color:white;
+}
+.errorDiv{padding:5px !important;}*/
+.login-error-div{
+	 width:100px;margin-top:-30px;margin-bottom:-0px;margin-left:-35px;	 
+}

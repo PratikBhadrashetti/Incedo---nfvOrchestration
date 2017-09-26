@@ -1,0 +1,141 @@
+body{box-sizing: border-box;overflow: auto;}
+.errorDiv{padding:5px !important;}
+.catalogueImageContainer{width:150px;height:150px;margin:auto;
+display:inline-block;margin:0 15px 0 15px;border:2px solid #B2C6DF;border-radius: 50%;}
+
+.mainDiv{margin-top:20px;}
+.addCatDiv{width:90%;margin:auto;padding:40px;border:3px solid #d8d3d3;margin-top:20px;
+    background:#f2f2f2;border-radius:8px;}
+/*.btn{margin-right:20px;}*/
+
+.filter{border:1px solid lightblue;padding:7px 8PX;border-radius: 4px;}
+
+.catalogueImageContainer:hover{background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+margin-bottom: 25px;cursor:pointer;}
+
+figure  img:first-child{padding:15px;margin-top:10px;border:1px solid transparent;border-radius: 8px;}
+figure{text-align:center;}
+
+figcaption{width:150px;text-align: center;padding:5px;font-size:16px;font-weight: bold;margin-top:23px;}
+
+.btn-nfv{
+    background-color: #B6C9E1;
+    margin-right: 10px;color:black;
+}
+.btn-nfv:hover{background: #425563;color:white;}
+.container{margin-top:20px;}
+/*.form-horizontal label{
+    text-align: left;
+    margin-left: 16%;
+}*/
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top:50px;
+
+}
+tr{border-bottom:1px solid lightblue;}
+
+th, td {
+    text-align: center;
+    padding: 8px;
+}
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+/*.desc{
+  text-align: justify;
+}*/
+tr:nth-child(even){background-color: #f2f2f2}
+/*
+input[type="file"]{background:#f2f2f2;padding:5px 10px;border-radius: 4px;}
+button{background:#A94442;padding:5px 10px;border:none;cursor:pointer;border-radius: 4px;color:white;}
+button:disabled{cursor: not-allowed; background: #cccccc;color:black;}*/
+/*.extraoptions input, .extraoptions button {margin:5px;}*/
+.respErr{
+  color: red;
+}
+
+
+.vnfmodal {
+     /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modalContent {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modalContent p{text-align:center;margin-bottom:40px;font-weight:bold;color:green;}
+.catalogueImageContainer{margin-top:30px;}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    opacity: 1;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #777;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 105%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #777777 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.my-pagination .ng2-pagination .current {
+    background: red !important;
+    margin-top: 20px !important;
+  }

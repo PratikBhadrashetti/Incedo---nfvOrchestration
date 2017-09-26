@@ -1,0 +1,78 @@
+<div class="alert alert-danger errorDiv" role="alert" *ngIf="statusMsg">
+  <strong>{{statusMsg}}</strong><span class='pull-right' style="cursor:pointer;color:red;"(click)="hideStatusMsg()">X</span>  
+</div>
+<div class="container">
+  <div [ngClass]="{'respErr': err}" *ngIf="!modifyCatalog">
+            {{viewCatMsg}}
+  </div>
+  <template [ngIf]="!modifyCatalog">
+  <div class="catalogueImageContainer" *ngFor="let cat of catList">
+    <figure>
+        <img src="{{cat.image}}" width="120px" id="catalog-{{cat.name}}" height="120px" alt="{{cat.name}}" (click)="setRouter(cat)">
+      <figcaption>{{cat.name}}</figcaption>
+    </figure>
+  </div>
+  </template>
+  
+<div class="container margin-60px-top"  *ngIf="modifyCatalog">
+    <div class="row">
+       
+       <div class="col-md-12">
+           <div class="panel panel-default">
+                    <div class="panel-body"> 
+      <div class="col-md-12">
+        <form  #modCatForm="ngForm" (ngSubmit)="modifyCatSubmit()"  class="form-horizontal" *ngIf="modifyCatalog">
+        <div [ngClass]="{'respErr': err}" *ngIf="modifyCatalog">
+            {{catDetMsg}}
+         </div>
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="email">Name</label>
+          <div class="col-sm-9">
+           {{model.catName}}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="des">Description</label>
+          <div class="col-sm-9">
+            <textarea class="form-control" id="des" [(ngModel)]="model.catDesc" name="catDesc"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="pwd">Select Users</label>
+          <div class="col-sm-9">
+              <br-select  [multiple]="true" [(ngModel)]="model.usersList" name="select" style="width:100% !important;" 
+                placeholder="Select User">
+                <br-select-option [value]="user.id" [text]="user.name"  *ngFor="let user of userOptions" >{{user.name}}</br-select-option>
+              </br-select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="icon">Icon</label>
+          <div class="col-sm-9">
+            <img src="{{catImage}}" width="120px" height="120px" class="img-thumbnail">
+            <label for="icon" style="cursor:pointer;margin-left: 0%;"><u>Update Icon</u></label>
+            <input type="file" class="form-control" id="icon"  (change)="onChange($event)"
+                     [(ngModel)]="model.icon" name="icon" accept="image/*" 
+                    style="display:none;">
+            </div>
+        </div>
+        <p class="text-center pull-right">
+            <button type="submit" class="btn btn-primary">Save</button>
+              <button type="button" class="btn btn-primary" (click)="clickCancel()">Cancel</button>
+        </p>
+        <div class="form-group">
+          <div class="col-sm-5"></div>
+          <div [ngClass]="{'respErr': err,'col-sm-5':true }">
+            {{modCatMsg}}
+          </div>
+        </div>
+      </form>
+    </div>
+ </div>
+  </div>
+</div>
+    </div>
+</div>
+</div>

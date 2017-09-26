@@ -1,0 +1,125 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "@bromzh/ng2-select",
+        "scope": "@bromzh",
+        "escapedName": "@bromzh%2fng2-select",
+        "name": "@bromzh/ng2-select",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "D:\\nfv_with_cli"
+    ]
+  ],
+  "_from": "@bromzh/ng2-select@latest",
+  "_id": "@bromzh/ng2-select@0.0.7",
+  "_inCache": true,
+  "_location": "/@bromzh/ng2-select",
+  "_nodeVersion": "6.5.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/ng2-select-0.0.7.tgz_1473163898524_0.3115148991346359"
+  },
+  "_npmUser": {
+    "name": "bromzh",
+    "email": "bromzh@gmail.com"
+  },
+  "_npmVersion": "3.10.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "@bromzh/ng2-select",
+    "scope": "@bromzh",
+    "escapedName": "@bromzh%2fng2-select",
+    "name": "@bromzh/ng2-select",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/@bromzh/ng2-select/-/ng2-select-0.0.7.tgz",
+  "_shasum": "d4b22d6b332c39859ae1c64c0122d4625fe24741",
+  "_shrinkwrap": null,
+  "_spec": "@bromzh/ng2-select",
+  "_where": "D:\\nfv_with_cli",
+  "author": {
+    "name": "bromzh@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/bromzh/ng2-select/issues"
+  },
+  "dependencies": {},
+  "description": "Select box component for Angular 2",
+  "devDependencies": {
+    "@angular/common": "2.0.0-rc.6",
+    "@angular/compiler": "2.0.0-rc.6",
+    "@angular/compiler-cli": "0.6.0",
+    "@angular/core": "2.0.0-rc.6",
+    "@angular/forms": "2.0.0-rc.6",
+    "@angular/platform-browser": "2.0.0-rc.6",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.6",
+    "@types/core-js": "^0.9.32",
+    "@types/jasmine": "^2.2.33",
+    "@types/node": "^6.0.38",
+    "codelyzer": "0.0.28",
+    "concurrently": "^2.2.0",
+    "core-js": "^2.4.1",
+    "jasmine-core": "^2.5.0",
+    "lite-server": "^2.2.2",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "^5.0.0-beta.11",
+    "systemjs": "^0.19.37",
+    "tslint": "^3.15.1",
+    "typescript": "^2.0.0",
+    "zone.js": "^0.6.17"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "d4b22d6b332c39859ae1c64c0122d4625fe24741",
+    "tarball": "https://registry.npmjs.org/@bromzh/ng2-select/-/ng2-select-0.0.7.tgz"
+  },
+  "gitHead": "5ea81ae19612960a24db77624a52fe5ad80db357",
+  "homepage": "https://github.com/bromzh/ng2-select#readme",
+  "keywords": [
+    "select",
+    "selectbox",
+    "angular2"
+  ],
+  "license": "WTFPL",
+  "main": "./dist/index.js",
+  "maintainers": [
+    {
+      "name": "bromzh",
+      "email": "bromzh@gmail.com"
+    }
+  ],
+  "name": "@bromzh/ng2-select",
+  "optionalDependencies": {},
+  "peerDependencies": {
+    "@angular/common": "2.0.0-rc.6",
+    "@angular/compiler": "2.0.0-rc.6",
+    "@angular/core": "2.0.0-rc.6",
+    "@angular/forms": "2.0.0-rc.6",
+    "@angular/platform-browser": "2.0.0-rc.6"
+  },
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bromzh/ng2-select.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "demo": "tsc -p demo",
+    "demo:lite": "lite-server -c lite-demo.config.json",
+    "demo:watch": "tsc -p demo -w",
+    "start": "tsc && concurrently \"npm run build:watch\" \"npm run demo:watch\" \"npm run demo:lite\" ",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w"
+  },
+  "typings": "./dist/index.d.ts",
+  "version": "0.0.7"
+}

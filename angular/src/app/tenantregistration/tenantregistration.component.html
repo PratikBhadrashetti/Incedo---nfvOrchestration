@@ -1,0 +1,52 @@
+<div class="loading" *ngIf="loadingImg"> <div class="center"><img src="assets/images/loading.gif"/></div></div> 
+<div class="alert alert-danger errorDiv" role="alert" *ngIf="statusMsg">
+  <strong>{{statusMsg}}</strong><span class='pull-right' style="cursor:pointer;color:red;"(click)="hideStatusMsg()">X</span>  
+</div>
+
+<div class="col-md-6 col-md-offset-3 mainDiv"> 
+    <form name="form" id="loginFormId" (ngSubmit)="f.form.valid && registerTenant()" #f="ngForm">
+   <h2>Tenant registration</h2><br>
+            <label for="firstName">First Name</label>
+             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstname.valid }">
+                  <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name" aria-describedby="basic-addon1" [(ngModel)]="model.firstname" #firstname="ngModel" required maxlength="16" autofocus>
+                  <div *ngIf="f.submitted && !firstname.valid" class="help-block">firstname is required</div>                 
+               
+            </div>
+
+            <label for="firstName">Last Name</label>
+             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lastname.valid }">
+               
+                  <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name" aria-describedby="basic-addon1" [(ngModel)]="model.lastname" #lastname="ngModel" required  maxlength="16">
+                  <div *ngIf="f.submitted && !lastname.valid" class="help-block">Lastname is required</div>                 
+               
+            </div>
+
+            <label for="firstName">User Name</label>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+               
+                  <input type="text" class="form-control" id="username" name="username" placeholder="User Name" aria-describedby="basic-addon1" [(ngModel)]="model.username" #username="ngModel" required maxlength="16" >
+                  <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>                 
+                
+            </div>
+
+             <label for="firstName">Email</label>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+              
+                  
+                  <input type="text" class="form-control" id="email" name="email" placeholder="Email" aria-describedby="basic-addon1" [(ngModel)]="model.email" #email="ngModel" required  >
+                  <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>                 
+                
+            </div>
+            
+            <label for="tenant">Select Tenant</label>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !tenant.valid }">               
+                <input type="text" class="form-control" name="tenant" [(ngModel)]="model.tenant" #tenant="ngModel" />
+            </div>
+
+           
+            <p class="text-center pull-right">
+                <button class="btn btn-danger">Register</button>
+                
+            </p>
+        </form>
+</div>

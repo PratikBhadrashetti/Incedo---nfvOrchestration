@@ -1,0 +1,46 @@
+.catalogueImageContainer{width:150px;height:150px;margin:auto;
+display:inline-block;margin:0 15px 0 15px;border:2px solid #B2C6DF;border-radius: 50%;}
+.catalogueImageContainer:hover{background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+margin-bottom: 25px;cursor:pointer;}
+
+figure  img:first-child{padding:15px;margin-top:10px;border:1px solid transparent;border-radius: 8px;}
+figure{text-align:center;}
+
+figcaption{width:150px;text-align: center;padding:5px;font-size:16px;font-weight: bold;margin-top:23px;}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    opacity: 1;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #777;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 105%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #777777 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}

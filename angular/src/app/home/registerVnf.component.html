@@ -1,0 +1,27 @@
+
+<div class="container margin-60px-top">
+   <div class="row">
+  <div class="col-md-12">
+    <div class="alert alert-danger errorDiv" role="alert" *ngIf="statusMsg">
+  <strong>{{statusMsg}}</strong><span class='pull-right' style="cursor:pointer;color:red;"(click)="hideStatusMsg()">X</span>  
+</div>
+     <div class="panel panel-default">
+                    <div class="panel-body text-center"> 
+                     
+    <form  #addCatForm="ngForm" (ngSubmit)="onSubmit()" class="form-inline">
+        <div class="form-group">
+          <label for="icon">Upload VNFD Template:</label>
+        
+            <input type="file" class="form-control" id="icon"  (change)="onChange($event)"
+                    required [(ngModel)]="model.icon" name="icon">
+         </div>
+       
+            <button class="btn btn-primary btn-sm" type="submit">Save</button>
+            <button class="btn btn-primary btn-sm" type="button" (click)="cancelFn()">Cancel</button>
+         
+    </form>
+</div>
+</div>
+</div>
+</div>
+</div>

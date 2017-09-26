@@ -1,0 +1,27 @@
+input{border-radius:4px !important;}
+label{margin-top:30px;}
+label:first-child{margin-top:50px;}
+.errorDiv{padding:5px !important;}
+
+
+form{width:49%;margin:auto;}
+
+#errorLog{    
+	padding: 4px !important;
+    margin-bottom: 10px;}
+button:disabled{background:grey;}
+
+p{margin-right:-12%;margin-top:50px;margin-right:40px;}
+button,.cncl{
+	background:#A94442;padding:5px 10px;border:none;cursor:pointer;border-radius: 4px;color:white;
+}
+.cncl{
+	padding: 7px;
+}
+a{
+	color: #fff;
+}
+a:hover {
+    text-decoration: none;
+    color: #fff;
+}

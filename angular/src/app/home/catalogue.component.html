@@ -1,0 +1,17 @@
+<div class="alert alert-danger errorDiv" role="alert" *ngIf="statusMsg">
+  <strong>{{statusMsg}}</strong><span class='pull-right' style="cursor:pointer;color:red;"(click)="hideStatusMsg()">X</span>  
+</div>
+
+<div class="container mainDiv" (click)="hideStatusMsg()">
+  <div [ngClass]="{'respErr': err}">
+            {{viewCatMsg}}
+  </div>
+  <div class="catalogueImageContainer tooltip" *ngFor="let cat of catList">
+    <figure>
+      <img src="{{cat.image}}" width="120px" id="catalog-{{cat.name}}" height="120px" alt="{{cat.name}}" (click)="onSelect(cat)" >
+      <figcaption>{{cat.name}}</figcaption>
+      <!--<span class="tooltiptext">{{cat.description}}</span>-->
+    </figure>
+  </div>
+  <router-outlet></router-outlet>
+</div>

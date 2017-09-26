@@ -1,0 +1,74 @@
+
+<div class="container margin-60px-top">
+    <div class="row">
+        <div class="col-md-12">
+        <div class="alert alert-danger errorDiv" role="alert" *ngIf="statusMsg">
+  <strong>{{statusMsg}}</strong><span class='pull-right' style="cursor:pointer;color:red;"(click)="hideStatusMsg()">X</span>  
+</div>
+      <div class="panel panel-default">
+                    <div class="panel-body"> 
+                     
+                        
+    <form  #addCatForm="ngForm" (ngSubmit)="onSubmit()"  class="form-horizontal">
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="email">Name</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="catalogName" placeholder="Enter Catalog Name" 
+                    required [(ngModel)]="model.catalogName" name="catalogName" maxlength="150">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="des">Description</label>
+          <div class="col-sm-9">
+            <textarea class="form-control" id="desc" placeholder="Enter Description"
+            [(ngModel)]="model.desc" name="desc"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="pwd">Select Users</label>
+          <div class="col-sm-9">
+              <br-select  [multiple]="true" [(ngModel)]="model.usersList" name="select" style="color:black;text-align:left;width:100% !important;" placeholder="Select User">
+                <br-select-option [value]="user.id" [text]="user.name" style="color:black;" *ngFor="let user of userOptions" >{{user.name}}</br-select-option>
+              </br-select>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="icon">Icon</label>
+          <div class="col-sm-9">
+            <input type="file" class="form-control" id="icon"  (change)="onChange($event)"
+                    required [(ngModel)]="model.icon" name="icon" accept="image/*">
+          </div>
+        </div>
+        
+          <div class="form-group">
+            <label class="col-md-3 control-label" for="PandP"></label>
+            <div class="col-md-9">
+                <label class="radio-inline">
+                   <input type="radio" [(ngModel)]="model.tenant"  name="tenant" value="public">Public
+                </label>
+                <label class="radio-inline">
+                   <input type="radio" [(ngModel)]="model.tenant"  name="tenant" value="private">Private
+                </label>
+              	<span class="help-block"></span>
+            </div>
+        </div>
+          <p class="text-center pull-right">
+            <button type="submit" class="btn btn-primary" id="addcatalog" [disabled]="disable">Save</button>
+            <button type="button" class="btn btn-primary" id="cancelcatalog" (click)="cancelFn()">Cancel</button>
+          </p>
+        
+        <div class="form-group">
+          <div class="col-sm-5"></div>
+          <div [ngClass]="{'respErr': err,'col-sm-5':true }">
+            {{catCreateMsg}}
+          </div>
+        </div>
+      </form>
+</div>
+</div>
+</div>
+</div>
+</div>

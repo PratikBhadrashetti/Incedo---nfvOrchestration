@@ -1,0 +1,44 @@
+/// <reference types="core-js" />
+import { ElementRef } from '@angular/core';
+import { SelectOptionComponent } from './select-option.component';
+import { ControlValueAccessor } from '@angular/forms';
+export declare class SelectComponent implements ControlValueAccessor {
+    private elRef;
+    id: string;
+    placeholder: string;
+    disabled: boolean;
+    name: string;
+    tabIndex: number;
+    ariaLabel: string;
+    ariaLabelledby: string;
+    multiple: boolean;
+    focused: boolean;
+    optionsVisible: boolean;
+    options: SelectOptionComponent[];
+    selectedItem: SelectOptionComponent;
+    searchQuery: string;
+    value: any;
+    constructor(elRef: ElementRef);
+    identifyFn: (a: any, b: any) => boolean;
+    onChange: (_: any) => void;
+    onTouched: () => void;
+    writeValue(obj: any): void;
+    registerOnChange(fn: any): void;
+    registerOnTouched(fn: any): void;
+    onFocus(event: FocusEvent): void;
+    onBlur(event: FocusEvent): void;
+    onClick(event: Event): void;
+    getPlaceholder(): string;
+    getSelectText(): string;
+    getViewText(): string;
+    onSearchQueryChanged(query: string): void;
+    onArrowClick(): void;
+    showOptions(): void;
+    hideOptions(): void;
+    toggleOptions(): void;
+    addOption(option: SelectOptionComponent): void;
+    removeOption(option: SelectOptionComponent): void;
+    onOptionClick(option: SelectOptionComponent): void;
+    getSelectedOptions(): Array<SelectOptionComponent>;
+    getSelectedValues(): Array<SelectOptionComponent>;
+}

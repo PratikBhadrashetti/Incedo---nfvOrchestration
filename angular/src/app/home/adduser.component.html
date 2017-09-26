@@ -1,0 +1,28 @@
+<div class="alert alert-danger err" role="alert" *ngIf="statusMsg">
+  <strong>{{statusMsg}}</strong><span class='pull-right' style="cursor:pointer;"(click)="hideStatusMsg()">X</span></div>
+ <div class="container"> 	
+	<table id="viewUserTable" class="addCatDiv">
+		<tr>
+			<th></th>
+			<th>
+				Name
+			</th>
+		</tr>
+		<tr *ngFor="let user of users">
+			<td>
+				<input type="checkbox" [checked]="user.checked" name="userSelected" (change)="userChecked(user,$event)">
+			</td>
+			<td>
+				{{user.name}}
+			</td>
+		</tr>
+	</table>
+	<div class="row form-group" style="margin-top: 2%">
+        <div class="col-sm-5"></div>
+          <div class="col-sm-5 pull-right"    style="margin-right: -22px;">
+            <button type="submit" (click)="vnfUserMap()">Save</button>
+            <button type="button" (click)="goBack()">Cancel</button>
+          </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

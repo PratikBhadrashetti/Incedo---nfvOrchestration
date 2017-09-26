@@ -1,0 +1,58 @@
+<HTML>
+    <HEAD>
+		<HTML>
+    <HEAD>
+		
+    </HEAD>
+    <BODY>
+    <table>
+  <thead>
+    <tr style="height:55px;width:100%;">
+      <th style="background-color:#9D000A;width:55px;padding-right: 25px;padding-left: 5px;color:#fff;font-size:50px;text-align:center; margin-right: 5px;">P</th>
+      <th style="background-color:#135163;width:100%;color:#fff;font-size:40px;font-family:Helvetica">Your Daily Document Status Summary for <i style="font-style: italic;">$projectName</i></th>
+     
+    </tr>
+  </thead>
+	</table>
+	    <p style="font-family:Helvetica;font-size:12px">Dear <i>$userName</i></p>
+    	<p style="font-family:Helvetica;font-size:12px">The following documents are pending your action on $projectName.</p>
+		<TABLE style="width: 100%;">
+			<tr style="font-family:Helvetica;background-color:#135163;color:#ffffff;height:30px;text-align:center;">
+    			<th>Document Ref</th>
+    			<th>Document Title</th>
+				<th>Response Date</th>
+				<th>Pending Action</th>
+			</tr>
+			#foreach( $data in $dataList )
+				#if ($foreach.count % 2 == 0)
+        			<TR style="background-color:#f1f1f1;font-family:Helvetica;font-size:12px;text-align:center;">
+            			<TD>$data.reference</TD>
+            			<TD>$data.title</TD>
+						<TD>$data.dueDate</TD>
+						<TD>$data.type</TD>
+          			</TR>
+				#else
+					<TR style="background-color:#fefefe;font-family:Helvetica;font-size:12px;text-align:center;">
+            			<TD>$data.reference</TD>
+            			<TD>$data.title</TD>
+						<TD>$data.dueDate</TD>
+						<TD>$data.type</TD>
+          			</TR>
+    			#end
+			#end
+		</TABLE>
+		<br>
+		<br>
+		<p style="font-family:Helvetica;font-size:12px;">
+		$projectName has automatically sent this email notification to you. If you no longer wish to receive similar notifications then please login to your account and disable email notifications within the My Space section.<br>
+<br>
+Do not reply to this email as this address is not monitored by us, if you need any help with your $projectName account then please access our Support Database or contact our dedicated Support Team via <a href="mailto:support@portenve.com">support@portenve.com</a>.<br>
+<br>
+Thank you, from the $projectName Team.<br>
+
+<br></p>
+<p style="text-align:center;font-family:Helvetica;font-size:10px;">
+                This email and any attachments are confidential, subject to copyright and may be privileged. No confidentiality or privilege is lost by an erroneous transmission. If you have received this email in error, please let us know by reply email and delete or destroy this email and all copies. If you are not the intended recipient of this email you must not disseminate, copy or use the information in it.
+</p>    </BODY>
+</HTML>
+    

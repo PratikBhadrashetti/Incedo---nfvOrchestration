@@ -1,0 +1,447 @@
+<div id="wrapper">
+    <div id="page-wrapper">
+        <br/>
+        <div class="row">
+                <div class="pull-left" style="margin-left:15px;">
+                <!--<select name="vim" [(ngModel)]="model.vim" #vim="ngModel" (ngModelChange)="viewDet($event)" style="width:170px;padding:6px;border-radius:4px;cursor: pointer;margin-right: 16px;margin-bottom: 11px;">
+                    <option *ngFor="let vim of osOptions" [ngValue]= "vim.id">
+                          {{vim.links.ip}}
+                    </option>
+                    </select>-->
+                <select  name="tenProjInfo" [(ngModel)]="model.tenProjInfo" #tenProjInfo="ngModel" (ngModelChange)="viewDet($event)" style="width:170px;padding:6px;border-radius:4px;cursor: pointer;margin-right: 16px;margin-bottom: 11px;">
+                    <option value='-1' *ngIf="currentUserRole == 'Super Security Admin'">System</option>
+                    <template [ngIf]="currentUserRole == 'Super Security Admin'">
+                    <option *ngFor="let tInfo of tenProjInfoOptions" [ngValue]= "tInfo.projectid" >
+                        {{tInfo.name}} : {{tInfo.projectid}}
+                    </option>
+                    </template>
+                    <option value = "{{tAdminProjId}}" *ngIf="currentUserRole == 'Tenant Admin'">
+                        {{tAdminProjName}} : {{tAdminProjId}}
+                    </option>
+                    </select>
+                       <!--<li *ngFor="let item of items | myfilter:filterargs">
+                            {{ item.title }}
+                        </li> -->
+                </div>
+                <div class="pull-right">
+                    <a href="http://10.145.251.11/horizon/admin/metering/?domain=default&username=admin&password=admin" target="_blank" *ngIf="currentUserRole == 'Super Security Admin'" style="margin-right:15px;">More Details in Ceilometer </a>
+                </div>
+          </div>
+    
+          <br/>
+          
+          <div class="row" *ngIf="model.tenProjInfo!='-1'">
+                  <div class="col-lg-12">
+                      <h4><strong>VIM Resources</strong></h4>
+                      <hr>
+                  </div>
+               </div>
+          <div class="row" *ngIf="model.tenProjInfo!='-1'">
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                 <div class="col-xs-3">
+                                    <img src="assets/images/cpu.png" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">VCPUs</div>
+                                    <div>Used {{osDetails.totalCoresUsed}} of {{osDetails.maxTotalCores}}</div>
+                                 </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                   <!--  <i class="fa fa-tasks fa-5x"></i> -->
+                                    <img src="assets/images/inst.png" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">Instances</div>
+                                    <!--<div>Used {{osDetails.totalInstancesUsed}} of {{osDetails.maxTotalInstances}}</div>-->
+                                    <div>&nbsp;{{osDetails.totalInstancesUsed}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="assets/images/ram.png" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">RAM<span class="small">(GB)</span></div>
+                                    <div>Used {{osDetails.totalRAMUsed | fileSize:GB}} of {{osDetails.maxTotalRAMSize | fileSize:GB}} </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                     <img src="assets/images/ip.ico" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">Floating IPs</div>
+                                    <div>Used {{osDetails.totalFloatingIpsUsed}} of {{osDetails.maxTotalFloatingIps}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                <!--<div class="col-lg-2 col-md-6">
+                    <div class="panel panel-lightblue">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                     <img src="assets/images/bw.png" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">Bandwidth</div>
+                                    <div>Used {{osDetails.totalFloatingIpsUsed}} of {{osDetails.maxTotalFloatingIps}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+              </div>
+          
+              <!-- start : for displaying default system view -->
+              <div class="col-md-5">
+               <div class="row" *ngIf="model.tenProjInfo =='-1'">
+                  <div class="col-lg-12">
+                      <h4><strong>VIM Resources</strong></h4>
+                      <hr>
+                  </div>
+               </div>
+            <div class="row" *ngIf="model.tenProjInfo == -1">
+                <div class="col-lg-6 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                 <div class="col-xs-3">
+                                    <img src="assets/images/cpu.png" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">VCPUs</div>
+                                    <div>Used {{hypervisor.vcpus_used}} of {{hypervisor.vcpus}}</div>
+                                 </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                   <!--  <i class="fa fa-tasks fa-5x"></i> -->
+                                    <img src="assets/images/inst.png" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">Instances</div>
+                                    <div>&nbsp;{{hypervisor.running_vms}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                 <div class="col-xs-3">
+                                    <img src="assets/images/ram.png" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">RAM<span class="small">(GB)</span></div>
+                                    <div>Used {{hypervisor.memory_mb_used | fileSize:GB}} of {{hypervisor.memory_mb | fileSize:GB}}</div>
+                                 </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                 <div class="col-xs-2">
+                                    <img src="assets/images/inst.png" height="40px" />
+                                </div>
+                                <div class="col-xs-10 text-right">
+                                    <div class="huge">Disk Usage<span class="small">(GB)</span></div>
+                                    <div>Used {{hypervisor.local_gb_used}} of {{hypervisor.local_gb}}</div>
+                                 </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+                <!--<div class="col-lg-2 col-md-6">
+                    <div class="panel panel-lightblue">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                     <img src="assets/images/bw.png" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">Bandwidth</div>
+                                    <div>Used 0 of 10</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+
+            </div>
+              </div>
+            <!-- <ul class="nav nav-tabs" role="tablist"> 
+                <li class="{{settingonactive1 ? 'active': ''}}">
+                    <a href="#hypervisor" id="hypervisor-tab" role="tab" data-toggle="tab" aria-controls="hypervisor" aria-expanded="true">Hypervisor Summary</a>
+                </li> 
+                <li class="{{settingonactive2 ? 'active': ''}}">
+                    <a href="#abc" role="tab" id="abc-tab" data-toggle="tab" aria-controls="abc" aria-expanded="false">Instances Summary</a>
+                </li> 
+    
+            </ul> 
+            <div class="row tab-pane {{settingonactive1 ? 'active': ''}}" id="abc"  *ngIf="model.tenProjInfo == -1" aria-labelledby="abc-tab">
+            asdkfheliunuewtyertonuao
+            </div>
+              id="hypervisor" aria-labelledby="hypervisor-tab"
+               -->
+           <!-- <div class="row" *ngIf="model.tenProjInfo == -1">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                           <b>HYPERVISOR SUMMARY</b>
+                        </div>
+                        <div class="panel-body"> 
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Hostname</th>
+                                    <th>Type</th>
+                                    <th>VCPUs (used)</th>
+                                    <th>VCPUs (total)</th>
+                                    <th>RAM (MB)</th>
+                                    <th>Local Storage (used)</th>
+                                    <th>Local Storage (total)</th>
+                                    <th>Instances</th>                                 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{hypervisor.hypervisor_hostname}}</td>
+                                    <td>{{hypervisor.hypervisor_type}}</td>
+                                    <td>{{hypervisor.vcpus_used}}</td>
+                                    <td>{{hypervisor.vcpus}}</td>
+                                    <td>{{hypervisor.free_ram_mb}}</td>
+                                    <td>{{hypervisor.local_gb_used}}</td>
+                                    <td>{{hypervisor.local_gb}}</td>
+                                    <td>{{hypervisor.running_vms}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                 </div> 
+                </div>                            
+            </div>
+            </div>-->
+                <!-- end : for displaying default system view id="instances" aria-labelledby="instances-tab"-->
+            <div class="col-md-7">
+               <div class="row" *ngIf="model.tenProjInfo=='-1'">
+                  <div class="col-lg-12">
+                      <h4><strong>DRM Resources</strong></h4>
+                      <hr>
+                  </div>
+               </div>
+               <div class="row" *ngIf="model.tenProjInfo=='-1'">
+                  <div>
+                      
+                 <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="assets/images/cpu.png" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">VCPUs</div>
+                                    <div *ngIf="drmDetails?.resources?.vCPUs?.available">Used 0 of {{drmDetails?.resources?.vCPUs?.available}} </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-2">
+                                   <!--  <i class="fa fa-tasks fa-5x"></i> -->
+                                    <img src="assets/images/inst.png" height="40px" />
+                                </div>
+                                <div class="col-xs-10 text-right">
+                                    <div style="font-size: 22px;">VM Instances</div>
+                                    <!--<div>Used {{osDetails.totalInstancesUsed}} of {{osDetails.maxTotalInstances}}</div>-->
+                                    <div *ngIf="drmDetails?.resources?.VMInstance?.available">Used 0 of {{drmDetails?.resources?.VMInstance?.available}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                      <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="assets/images/ram.png" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">RAM<span class="small">(GB)</span></div>
+                                    <div *ngIf="drmDetails?.resources?.RAM?.available">Used 0 of {{drmDetails?.resources?.RAM?.available | fileSize:GB}}  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <div class="row">
+                                 <div class="col-xs-2">
+                                    <img src="assets/images/firewall.png" height="35px" />
+                                </div>
+                                <div class="col-xs-10 text-right">
+                                    <div style="font-size: 21px;">Firewall Rules</div>
+                                    <div *ngIf="drmDetails?.resources?.FirewallRules?.available">Used 0 of {{drmDetails?.resources?.FirewallRules?.available}} </div>
+                                 </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+                 <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="assets/images/subnet.png" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">Subnets</div>
+                                    <div *ngIf="drmDetails?.resources?.Subnets?.available">Used 0 of {{drmDetails?.resources?.Subnets?.available}}  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                      <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="assets/images/ip.ico" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div style="font-size: 22px;">Floating IPs</div>
+                                    <div *ngIf="drmDetails?.resources?.FloatingIPs?.available">Used 0 of {{drmDetails?.resources?.FloatingIPs?.available}}  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  </div>
+               </div>
+            </div>
+              <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                         <div class="panel-heading">
+                           <b>INSTANCES USAGE</b>
+                        </div> 
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-8 pull-left">
+                                    <input type="text" class="searchItem" 
+                                        id="searchItem" placeholder="Search Instance Name" 
+                                        required [(ngModel)]="model.searchItem" name="searchItem">
+                                </div>
+                                <div class="col-lg-4">
+                                 
+                                <select class="pull-right" style="width:170px;padding:6px;border-radius:4px;cursor: pointer;margin-right: 0px;margin-bottom: 11px;" name="cat" [(ngModel)]="model.items">
+                                            <option value='10' selected='true'>10 Items per page</option>
+                                            <option value='15'>15 Items per page</option>
+                                            <option value='25'>25 Items per page</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Instance Name</th>
+                                                    <th>VCPUs</th>
+                                                    <th>RAM</th>
+                                                    <th>Root Disk</th>
+                                                    <th>Created</th>
+                                                    <th>Status</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                          <tr *ngFor ="let inst of instDetails | paginate: { itemsPerPage: model.items, currentPage: p}| myfilter: [{name: model.searchItem}]">
+                                                    <td>{{inst.name}}</td>
+                                                    <td>{{inst.flavDet.vcpu}}</td>
+                                                    <td>{{inst.flavDet.ram}}</td>
+                                                    <td>{{inst.flavDet.rootDisk}}</td>
+                                                    <td>{{inst.created}}</td>
+                                                    <td>{{inst.status}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                         <div style="padding:20px;width:100%;text-align: center;cursor:pointer;">
+                                           <pagination-controls class="my-pagination" (pageChange)="p = $event" autoHide="true"></pagination-controls>
+                                        </div>
+                                    </div>
+                                    <!-- /.table-responsive -->
+                                </div>
+                                <!-- /.col-lg-4 (nested) -->
+                                <div class="col-lg-8">
+                                    <div id="morris-bar-chart"></div>
+                                </div>
+                                <!-- /.col-lg-8 (nested) -->
+                            </div>
+                            <!-- /.row -->
+                         </div> 
+                    </div>
+                </div>
+                <!-- /.col-lg-8 -->
+             </div>
+
+          <!-- </div> -->
+            <!-- /#page-wrapper -->
+    </div>
+   
+    <script src="assets\dash\metisMenu.min.js"></script>
+    <script src="assets\dash\raphael.min.js"></script>
+    <script src="assets\dash\morris-data.js"></script>
+    <script src="assets\dash\sb-admin-2.js"></script>

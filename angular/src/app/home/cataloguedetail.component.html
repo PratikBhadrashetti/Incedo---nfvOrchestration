@@ -1,0 +1,75 @@
+<div class="alert alert-danger errorDiv" role="alert" *ngIf="statusMsg">
+  <strong>{{statusMsg}}</strong><span class='pull-right' style="cursor:pointer;"(click)="hideStatusMsg()">X</span>  
+</div>
+<div class="container  margin-60px-top" >
+   <div class="row">
+      <div class="col-md-12">
+ <div class="extraoptions">
+  <a [routerLink]="['../addvnf']" class="btn btn-primary btn-sm" *ngIf="currentUserRole=='Super Security Admin' || currentUserRole=='Tenant Admin'" id="associatevnf">Associate VNF</a>
+  <button type="button" class="btn btn-primary btn-sm"  id="dissociatevnf" *ngIf="currentUserRole=='Super Security Admin' || currentUserRole=='Tenant Admin'" (click)="dissVnfFn()" [disabled]="checked">Dissociate VNF
+  </button>
+  <!--<select style="width:170px;padding:6px;border-radius:4px;cursor: pointer;" name="cat" placeholder="Select catalog" [(ngModel)]="model.items" class="pull-right">
+                <option value='10' selected='true'>10 Items per page</option>
+                <option value='25'>25 Items per page</option>
+                <option value='50'>50 Items per page</option>
+  </select>-->
+ </div>
+ <div [ngClass]="{'respErr': err}">{{catDetMsg}}</div>
+   <div class="panel panel-default" style="margin-top:5px;">
+      <div class="panel-body"> 
+ <!--<table class="table">
+    <thead>
+    <tr>
+     <th></th>
+     <th>Name</th>
+     <th>Image ID</th>
+     <th>Description</th>
+     <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let vnf of vnfList | paginate: { itemsPerPage: model.items, currentPage: p }">
+     <td><input type='checkbox'  (change)="vnfChecked(vnf,$event)" *ngIf="currentUserRole=='Super Security Admin'||currentUserRole=='Tenant Admin'"></td>
+     <td>{{vnf.name}}</td>
+     <td>{{vnf.imageid}}</td>
+     <td>{{vnf.description}}</td>
+     <td><button type="button" class="btn btn-primary"  *ngIf="vnf.tenant!==null && tenantid!==vnf.tenant.id" (click)="registerVnf(vnf)">Register</button></td>
+    </tr>
+    </tbody>
+  </table>-->
+  <div class="container mainDiv">
+   <div class="catalogueImageContainer tooltip" *ngFor="let vnf of vnfList">
+    <figure>
+      <img src="assets/images/vnf.png" width="120px" height="120px" alt="{{vnf.imageid}}" (click)="lunchModal(vnf)" >
+      <figcaption><input type='checkbox'  (change)="vnfChecked(vnf,$event)" *ngIf="currentUserRole=='Super Security Admin'||currentUserRole=='Tenant Admin'"> {{vnf.description}}</figcaption>
+      <span class="tooltiptext">{{vnf.name}}
+       </span>
+    </figure>
+  </div>
+ <router-outlet></router-outlet>
+  </div>
+  </div>
+   </div>
+ <!--<div style="padding:20px;width:100%;text-align: center;cursor:pointer;">
+   <pagination-controls class="my-pagination" (pageChange)="p = $event" autoHide="true"></pagination-controls>
+   </div>-->
+</div>
+</div>
+</div>
+
+
+
+
+<modal #openCatalogConfirm [backdrop]="'static'">
+    
+        <modal-header [show-close]="true">
+            <h4 class="modal-title">Confirm</h4>
+        </modal-header>
+        <modal-body>
+         Please confirm whether you want to register or not ?
+        </modal-body>
+     <modal-footer>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">No</button>
+        <button type="button" class="btn btn-primary" (click)="registerVnfModal()">Ok</button>
+    </modal-footer>
+</modal>

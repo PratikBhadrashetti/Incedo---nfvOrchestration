@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: nfv-orchestration
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: pratik.bhadrashetti
+Implementation-Vendor-Id: com.nfv
+Build-Jdk: 1.8.0_101
+Implementation-URL: http://projects.spring.io/spring-boot/nfv-orchestr
+ ation/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

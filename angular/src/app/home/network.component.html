@@ -1,0 +1,109 @@
+<div class="container" style="margin-top:10px;">
+    <div class="row">
+         <div class="col-md-12">
+           <!--<div class="loading" *ngIf="loadingImg"> <div class="center"><img src="assets/images/loading.gif"/></div></div> -->
+<div class="alert alert-danger errorDiv" role="alert" *ngIf="statusMsg">
+  <strong>{{statusMsg}}</strong><span class='pull-right' style="cursor:pointer;color:red;"(click)="hideStatusMsg()">X</span>  
+</div>
+<button type="button" class="btn btn-primary btn-sm margin-5px-bottom" data-toggle="modal" data-target="#addUserModal">Add Network Resource</button>
+             <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                           <div class="table-responsive"> 
+                               <table class="table"> 
+                                   <thead> 
+                                       <tr> 
+                                           <th>#</th> 
+                                           <th>Cidr</th> 
+                                           <th>Start</th>
+                                           <th>End</th>
+                                           <th>DNS Nameserver</th>
+                                           <th>Gateway IP</th>  
+                                           <!--<th>Actions</th> -->
+                                        </tr> 
+                                    </thead> 
+                                    <tbody> 
+                                        <tr *ngFor="let allnetwork of getallprivateNetwork; let i=index"> 
+                                            <th scope="row">{{i+1}}</th> 
+                                            <td>{{allnetwork.cidr}}</td> 
+                                            <td>{{allnetwork.start}}</td>
+                                            <td>{{allnetwork.end}}</td>
+                                            <td>{{allnetwork.dns}}</td>
+                                            <td>{{allnetwork.gateway}}</td>
+                                                                                       
+                                        </tr> 
+                                     
+                                    </tbody> 
+                                </table> 
+                            </div>
+                          
+                        </div>
+                    
+                     </div>
+                    </div>
+                    </div>
+               </div>
+            </div>
+
+<!-- Modal -->
+<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+      <form  #f="ngForm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Network Resource</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-horizontal">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !cidr.valid }">
+            <label for="fname" class="col-sm-3 control-label">Cidr</label>
+            <div class="col-sm-9">
+          <input type="text" class="form-control" name="cidr" [(ngModel)]="model.cidr" #cidr="ngModel" placeholder="Cidr">
+              <div *ngIf="f.submitted && !cidr.valid" class="help-block">Cidr is required</div>   
+            </div>
+        </div>
+
+         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !start.valid }">
+            <label for="lname" class="col-sm-3 control-label">Start</label>
+            <div class="col-sm-9">
+             <input type="text" class="form-control" name="start" [(ngModel)]="model.start" #start="ngModel" placeholder="Start">
+              <div *ngIf="f.submitted && !start.valid" class="help-block">Start is required</div> 
+            </div>
+        </div>
+
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !end.valid }">
+            <label for="lname" class="col-sm-3 control-label">End</label>
+            <div class="col-sm-9">
+           <input type="text" class="form-control" name="end" [(ngModel)]="model.end" #end="ngModel" placeholder="End">
+              <div *ngIf="f.submitted && !end.valid" class="help-block">End is required</div> 
+            </div>
+        </div>
+
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !dns.valid }">
+            <label for="uemail" class="col-sm-3 control-label">DNS Nameserver</label>
+            <div class="col-sm-9">
+             <input type="email" class="form-control" id="dns" name="dns" placeholder="DNS Nameserver" aria-describedby="basic-addon1" [(ngModel)]="model.dns" #dns="ngModel" required>
+             <div *ngIf="f.submitted && !dns.valid" class="help-block">DNS Nameserver is required</div> 
+           
+            </div>
+        </div>
+
+         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !gateway.valid }">
+             <label for="lname" class="col-sm-3 control-label">Gateway IP</label>
+            <div class="col-sm-9">
+            <input type="text" class="form-control" name="gateway" [(ngModel)]="model.gateway" #gateway="ngModel" placeholder="Gateway IP">
+              <div *ngIf="f.submitted && !gateway.valid" class="help-block">Gateway IP is required</div> 
+            </div>
+        </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)='f.form.valid && savePrivateNetwork()' data-dismiss="modal">Save</button>
+      </div>
+    </div>
+      </form>
+  </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,21 @@
+﻿<!--<header style="margin-top:10px;">
+	<div class="container">
+		<a [routerLink]="['/home']"><img src="assets/images/logo.png" height="55px" /></a>
+		<span>NFV OPEN LAB</span>
+	</div>
+</header>-->
+
+<nav class="navbar navbar-default navbar-customize">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand"  [routerLink]="['/home']">
+        <img alt="Huawei" src="assets/images/logo.png" class="brand-logo-size">
+      </a>
+	  <span class="navbar-brand navbar-brand-customize">
+         NFV OPEN LAB
+      </span>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

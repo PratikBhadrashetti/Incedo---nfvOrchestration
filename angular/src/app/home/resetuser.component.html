@@ -1,0 +1,47 @@
+
+
+<div class="container margin-60px-top">
+    <div class="row">
+       
+       <div class="col-md-12">
+				 <div class="alert alert-danger errorDiv" role="alert" *ngIf="statusMsg">
+  <strong>{{statusMsg}}</strong><span class='pull-right' style="cursor:pointer;color:red;"(click)="hideStatusMsg()">X</span>  
+</div>
+            <div class="panel panel-default">
+                    <div class="panel-body"> 
+	<form  #f="ngForm" (ngSubmit)="f.form.valid && resetUser()" class="form-horizontal"  autocomplete="on">
+
+		<div class="form-group">
+	          <label for="pwd" class="col-sm-3 control-label">Select User</label>
+	           <div class="col-sm-9">
+	              <br-select  [multiple]="false" [(ngModel)]="model.usersList" style="width:100%;" name="select"  placeholder="Select User" autocomplete="off">
+	                <br-select-option [value]="user.id" [text]="user.name" style="color:black;" *ngFor="let user of userOptions" >{{user.name}}</br-select-option>
+	              </br-select>
+	            </div>
+	    </div>
+	    <!--<input type="text" style="visibility: hidden;" autocomplete="off">-->
+		<div class="form-group">
+		    <label for="password" class="col-sm-3 control-label">New Password</label>
+		    <div class="col-sm-9">  
+		    	<input type="password" class="form-control" id="password" name="password" size="16" placeholder="Password" [(ngModel)]="model.password" #password="ngModel" required maxlength="16"  autocomplete="new-password">
+		    </div>
+	    </div>
+
+	    <div class="form-group">
+			<label  for="firstName" class="col-sm-3 control-label">Confirm New Password</label>		 
+			<div class="col-sm-9">		      
+		      <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password" aria-describedby="basic-addon1" [(ngModel)]="model.confirmpassword" #confirmpassword="ngModel" size="16" required maxlength="16" autocomplete="new-password">		          <div class="alert-danger" id="errorLog" *ngIf="passworderror">Passwords do not match</div>       
+			</div>
+		 </div>
+
+	
+	 <p class="text-center pull-right">
+		    <button class="btn btn-primary" [disabled]="model.usersList==undefined || model.usersList.length==0">Reset user</button>
+		    <a [routerLink]="['/catalogue']"  class="btn btn-primary" >Cancel</a>
+	 </p>
+	</form>
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 

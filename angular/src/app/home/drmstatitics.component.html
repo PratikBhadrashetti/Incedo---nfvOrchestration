@@ -1,0 +1,103 @@
+<div id="wrapper">
+    <div id="page-wrapper">
+        <br/>
+        
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                 <div class="col-xs-3">
+                                    <img src="assets/images/firewall.png" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">Firewall Rules</div>
+                                    <div>{{drmDetails?.resources?.FirewallRules?.available}} </div>
+                                 </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                   <!--  <i class="fa fa-tasks fa-5x"></i> -->
+                                    <img src="assets/images/inst.png" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">VMInstance</div>
+                                    <!--<div>Used {{osDetails.totalInstancesUsed}} of {{osDetails.maxTotalInstances}}</div>-->
+                                    <div>{{drmDetails?.resources?.VMInstance?.available}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="assets/images/cpu.png" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">vCPUs</div>
+                                    <div>{{drmDetails?.resources?.vCPUs?.available}} </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                      <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="assets/images/ram.png" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">RAM</div>
+                                    <div>{{drmDetails?.resources?.RAM?.available}}  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="assets/images/subnet.png" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">Subnets</div>
+                                    <div>{{drmDetails?.resources?.Subnets?.available}}  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                      <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="assets/images/ip.ico" height="40px" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">FloatingIPs</div>
+                                    <div>{{drmDetails?.resources?.FloatingIPs?.available}}  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        
+    </div>
+</div>
+    

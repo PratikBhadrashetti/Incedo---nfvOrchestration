@@ -1,0 +1,28 @@
+#viewUserTable,td,th{border-collapse: collapse;text-align:center;}
+/*.filter{border:1px solid lightblue;padding:4px;border-radius: 4px;}*/
+.btn{margin-top:20px;}
+
+tr{border-bottom:1px solid lightblue;}
+#viewUserTable th{padding:10px 20px;}
+#viewUserTable td{padding:15px 15px;}
+#viewUserTable{width:100%;}
+#viewUserTable tr:nth-child(even){background-color: #f2f2f2}
+.active{background:green;color:white;}
+.notactive{background:red;color:white;cursor:pointer;}
+
+#editbutton{background:#A94442;padding:5px 10px;border:none;cursor:pointer;border-radius: 4px;
+	margin:0 30px 30px 0;color:white;}
+	button{background:#A94442;padding:5px 10px;border:none;cursor:pointer;border-radius: 4px;color:white;}
+
+
+#viewUserTable{border-collapse: collapse;
+ 				width: 100%;
+    			margin-top:50px;}
+
+hr {
+    border: none;
+    height: 1px;
+    /* Set the hr color */
+    color: #333; /* old IE */
+    background-color: grey; /* Modern Browsers */
+}

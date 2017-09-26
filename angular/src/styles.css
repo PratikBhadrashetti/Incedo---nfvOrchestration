@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+ *{
+     outline:none;
+    
+ }
+ body{
+    overflow-y: scroll;
+    overflow-x: hidden;
+ }
+.margin-80px-top{
+     margin-top:80px;
+ }
+ .margin-60px-top{
+     margin-top:40px;
+ }
+  .margin-0px-top{
+     margin-top:0px;
+ }
+.brand-logo-img{
+     margin-top:-5px;
+ }
+ .width-250{
+     width:250px;
+ }
+ .margin-5px-bottom{
+     margin-bottom: 5px;
+ }
+ .nav-tabs { border-bottom: 2px solid #DDD; }
+ .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
+ .nav-tabs > li > a { border: none; color: #666; }
+ .nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none; color: #4285F4 !important; background: transparent; }
+ .nav-tabs > li > a::after { content: ""; background: #4285F4; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+ .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
+.tab-nav > li > a::after { background: #21527d none repeat scroll 0% 0%; color: #fff; }
+.tab-pane { padding: 15px 0; }
+.tab-content{padding:20px}
+.not-active {
+   pointer-events: none;
+   cursor: default;
+}
+.dropdown-menu-cust{
+    min-width:auto;
+}
+.right-bar{
+    border-right:2px solid #eee;
+}

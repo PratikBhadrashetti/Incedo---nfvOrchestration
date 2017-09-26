@@ -1,0 +1,46 @@
+<div class="alert alert-danger errorDiv" role="alert" *ngIf="statusMsg">
+  <strong>{{statusMsg}}</strong><span class='pull-right' style="cursor:pointer;color:red;"(click)="hideStatusMsg()">X</span>  
+</div>
+
+<div class="container" >
+	<select class="pull-right top-space" style="width:170px;padding:6px;border-radius:4px;cursor: pointer;" name="cat" placeholder="Select catalog" [(ngModel)]="model.items">
+                <option value='10' selected='true'>10 Items per page</option>
+                <option value='25'>25 Items per page</option>
+                <option value='50'>50 Items per page</option>
+  </select>
+	 <button class="pull-right top-space" (click)='refreshPage()' style="margin-right:20px;"><span class="glyphicon glyphicon-refresh" ></span> Refresh</button>
+
+	 <div [ngClass]="{'respErr': err}">
+            {{vnfInstMsg}}
+  	</div>
+	<table>
+		<tr>
+			<th>Instance Name</th>
+			<th>Image Name</th>
+			<th>Catalog</th>
+			<th>Public IP</th>
+			<th>Private IP</th>
+			<th>Status</th>
+			<th>Created</th>
+			<th>Action</th>
+		</tr>
+		<tr *ngFor="let vnf of vnfInstList | paginate: { itemsPerPage: model.items, currentPage: p }"  title="{{vnf.description}}">
+			<td>{{vnf.name}}</td>
+			<td>{{vnf.vnf.name}}</td>
+			<td>{{vnf.catalog.name}}</td>
+			<td>{{vnf.publicip}}</td>
+			<td>{{vnf.privateip}}</td>
+			<td>{{vnf.status}}</td>
+			<td>{{vnf.created}}</td>
+			<td><a *ngIf="currentUserRole =='Super Security Admin'||currentUserRole =='Tenant Admin'"
+				href="{{vnf.elk_uri}}"
+				[ngClass]="{'tempDisable':vnf.status.toUpperCase()!=='ACTIVE','view':true}"
+				target="_blank">View</a></td>
+		</tr>
+	</table>
+	<div style="padding:20px;width:100%;text-align: center;cursor:pointer;">
+   		<pagination-controls class="my-pagination" (pageChange)="p = $event" autoHide="true"></pagination-controls>
+   </div>
+</div>	
+<router-outlet></router-outlet>
+			
